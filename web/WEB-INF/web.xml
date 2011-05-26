@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "web-app_2_3.dtd">
+<web-app>
+	<display-name>Oddjob</display-name>
+	<description> The Oddjob Web Application. </description>
+	<!-- The one and only Oddjob servlet -->
+	<servlet>
+		<servlet-name>Oddjob</servlet-name>
+		<servlet-class>org.oddjob.webapp.servlets.OddjobServlet</servlet-class>
+		<init-param>
+			<param-name>file</param-name>
+			<param-value>/WEB-INF/oddjob.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>root</param-name>
+			<param-value>main</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>Icon Registry</servlet-name>
+		<servlet-class>org.oddjob.webapp.servlets.IconServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>Oddjob View</servlet-name>
+		<servlet-class>org.oddjob.webapp.servlets.LookupServlet</servlet-class>
+		<init-param>
+			<param-name>root</param-name>
+			<param-value>main</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<!-- Struts Action Servlet Configuration -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>application</param-name>
+			<param-value> 
+				org.apache.struts.webapp.example.ApplicationResources</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>3</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<!-- Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Icon Registry</servlet-name>
+		<url-pattern>/icon</url-pattern>
+	</servlet-mapping>
+	<!-- The Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- Struts Tag Library Descriptors -->
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+	</taglib>
+	<!-- Environment entry examples -->
+	<!-- one day oddjob will load these but it doesn't yet -->
+	<env-entry>
+		<env-entry-name>foo/name1</env-entry-name>
+		<env-entry-value>value1</env-entry-value>
+		<env-entry-type>java.lang.String</env-entry-type>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>foo/bar/name2</env-entry-name>
+		<env-entry-value>true</env-entry-value>
+		<env-entry-type>java.lang.Boolean</env-entry-type>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>name3</env-entry-name>
+		<env-entry-value>1</env-entry-value>
+		<env-entry-type>java.lang.Integer</env-entry-type>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>foo/name4</env-entry-name>
+		<env-entry-value>10</env-entry-value>
+		<env-entry-type>java.lang.Integer</env-entry-type>
+	</env-entry>
+</web-app>

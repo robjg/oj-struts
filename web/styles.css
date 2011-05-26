@@ -1,0 +1,85 @@
+
+#tree {
+	width: 100%;	
+}
+
+#ojtree {
+	margin: 1em 0 0 0;
+}
+
+#topbar {
+	width: 100%;
+	background: black; 
+	padding: 0.5em 0 1em 0.5em;
+	margin: 0 0 1em 0;
+}	
+
+#topbar h1 {
+ 	color: white; 
+	font: 35pt bold; 
+	margin-bottom: 0;
+}
+
+#topbar a {
+	color: yellow;
+	text-decoration: none; 
+}
+
+#topbar a:hover {
+	color: white; 
+}
+
+/* sidebar */
+
+#tabs {
+	border: 0 0 0 0;
+	margin: 0 0 0 0;
+	max-width: 600px;
+	width: 100%;
+}
+
+#tabs .surround {
+	background: green; 
+}
+
+#tabs .selected {
+	color: red;
+	text-decoration: none; 
+}
+
+#tabs .notSelected {
+	color: yellow; 
+	text-decoration: none; 
+}
+
+#tabs a:hover {
+	color: white; 
+}
+
+/* main */
+
+#main {
+	height: 600px;
+	width: 100%;
+ 	padding: 0.7em; 
+	background: white;
+	font-family: verdana helvetica, arial, sans-serif;
+	font-size: 0.92em;
+}
+
+#refresh {
+	padding: 0.4em;
+	margin: 0.4em 0 0.4em 0;
+	border: solid green;
+	width: 480px;
+}
+
+#commands {
+	padding: 0.4em;
+	margin: 0.4em 0 0.4em 0;
+	border: solid black;
+}
+
+#commands td {
+	width: 120px;	
+}

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "/WEB-INF/struts-config_1_1.dtd">
+<struts-config>
+	
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+    <form-bean name="treeForm"
+               type="org.oddjob.webapp.struts.forms.TreeFormBean"/>
+
+    <form-bean name="detailForm"
+               type="org.oddjob.webapp.struts.forms.DetailForm"/>
+               
+    <form-bean name="jobActionsForm"
+               type="org.oddjob.webapp.struts.forms.JobActionsForm"/>
+               
+    <form-bean name="refreshForm"
+               type="org.oddjob.webapp.struts.forms.RefreshForm"/>
+               
+  </form-beans>
+
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+
+    <action    path="/oddjob-tree"
+               type="org.oddjob.webapp.struts.actions.TreeBuilderAction"
+               scope="session"
+               name="treeForm">
+      <forward name="input" path="/tree.jsp"/>
+    </action>
+
+	<!--  needs to be session so tab selection isn't lost. -->
+    <action    path="/detail"
+               type="org.oddjob.webapp.struts.actions.DetailPanelAction"
+    		   scope="session"
+               name="detailForm">
+      <forward name="detail" path="/detail.jsp"/>
+      <forward name="nodetail" path="/nodetail.html"/>
+    </action>
+
+    <action    path="/state"
+               type="org.oddjob.webapp.struts.actions.StateTabAction"
+               name="detailForm"
+    		   scope="request"
+      		   input="/state.jsp"/>
+    
+    <action    path="/console"
+    		   scope="request"
+               type="org.oddjob.webapp.struts.actions.ConsoleTabAction"
+               name="detailForm"
+      		   input="/console.jsp"/>
+      		   
+    <action    path="/log"
+    		   scope="request"
+               type="org.oddjob.webapp.struts.actions.LogTabAction"
+               name="detailForm"
+      		   input="/log.jsp"/>
+      		   
+    <action    path="/property"
+    		   scope="request"
+               type="org.oddjob.webapp.struts.actions.PropertyTabAction"
+               name="detailForm"
+      		   input="/property.jsp"/>
+      		   
+    <action    path="/jobActionsPopulate"
+    		   scope="request"
+               type="org.oddjob.webapp.struts.actions.JobActionsPopulateAction"
+               name="jobActionsForm"
+      		   input="/actions.jsp"/>
+      		   
+    <action    path="/jobActionsPerform"
+    		   scope="request"
+               type="org.oddjob.webapp.struts.actions.JobActionsPerformAction"
+               name="jobActionsForm"
+      		   input="/index.jsp"/>
+      		   
+    <action    path="/refreshPopulate"
+    		   scope="request"
+               type="org.oddjob.webapp.struts.actions.RefreshPopulateAction"
+               name="refreshForm"
+      		   input="/refresh.jsp"/>
+      		   
+    <action    path="/refreshPerform"
+    		   scope="request"
+               type="org.oddjob.webapp.struts.actions.RefreshPerformAction"
+               name="refreshForm"
+      		   input="/index.jsp"/>
+      		   
+  </action-mappings>
+    
+  <!-- ========== Plugin Definitions ============================== -->
+  
+  <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+    <set-property property="definitions-config"
+			value="/WEB-INF/tiles-defs.xml" />
+	<set-property property="definitions-debug" value="2" />
+	<set-property property="moduleAware" value="false" />
+	<set-property property="definitions-parser-validate" value="true" />
+  </plug-in>
+
+</struts-config>

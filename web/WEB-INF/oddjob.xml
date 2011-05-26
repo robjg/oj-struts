@@ -1,0 +1,8 @@
+<oddjob id="this">
+    <job>
+        <oddjob id="main"
+                name="Webapp Demo"
+                file="${this.dir}/client.xml">
+        </oddjob>
+    </job>
+</oddjob>

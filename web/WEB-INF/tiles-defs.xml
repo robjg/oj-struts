@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "/WEB-INF/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+  
+  <definition name="tree.view" path="/layouts/treeLayout.jsp">
+  	<put name="tree.title" value="/title.jsp"/>
+  	<put name="tree.tree" value="/oddjobTree.jsp"/>
+  </definition>
+  
+  <definition name="detail.view" path="/layouts/detailLayout.jsp">
+  	<put name="detail.commands" value="/jobActionsPopulate.do"/>
+  	<put name="detail.tabs" value="detail.tabs"/>
+  </definition>
+  
+  <definition name="detail.tabs" path="/layouts/tabsLayout.jsp">
+	  <put name="parameterName"   value="selectedTab" />
+	  <putList name="tabList">
+	  	<item value="State" link="../state.do"
+	  			classtype="org.apache.struts.tiles.beans.SimpleMenuItem"/>
+	  	<item value="Console" link="../console.do"
+	  			classtype="org.apache.struts.tiles.beans.SimpleMenuItem"/>
+	  	<item value="Log" link="../log.do"
+	  			classtype="org.apache.struts.tiles.beans.SimpleMenuItem"/>
+	  	<item value="Properties" link="../property.do"
+	  			classtype="org.apache.struts.tiles.beans.SimpleMenuItem"/>
+	  </putList>
+  </definition>
+
+
+</tiles-definitions>
