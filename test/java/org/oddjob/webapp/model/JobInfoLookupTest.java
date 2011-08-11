@@ -25,7 +25,7 @@ import org.oddjob.logging.log4j.Log4jArchiver;
 import org.oddjob.monitor.context.ExplorerContext;
 import org.oddjob.monitor.model.LogContextInialiser;
 import org.oddjob.monitor.model.MockExplorerContext;
-import org.oddjob.state.JobState;
+import org.oddjob.state.ParentState;
 import org.oddjob.util.SimpleThreadManager;
 import org.oddjob.util.ThreadManager;
 
@@ -246,7 +246,7 @@ public class JobInfoLookupTest extends TestCase {
 			Thread.sleep(500);
 		}
 		
-		assertEquals(JobState.COMPLETE, oj.lastJobStateEvent().getJobState());
+		assertEquals(ParentState.COMPLETE, oj.lastStateEvent().getState());
 		
 		assertTrue(actions.commands().contains("Hard Reset"));
 		assertTrue(actions.isEnabled("Hard Reset"));
@@ -257,7 +257,7 @@ public class JobInfoLookupTest extends TestCase {
 			Thread.sleep(500);
 		}
 		
-		assertEquals(JobState.READY, oj.lastJobStateEvent().getJobState());
+		assertEquals(ParentState.READY, oj.lastStateEvent().getState());
 
 		actions.action("Run");
 		while (tm.activeDescriptions().length > 0) {
@@ -265,6 +265,6 @@ public class JobInfoLookupTest extends TestCase {
 			Thread.sleep(500);
 		}
 		
-		assertEquals(JobState.COMPLETE, oj.lastJobStateEvent().getJobState());
+		assertEquals(ParentState.COMPLETE, oj.lastStateEvent().getState());
 	}
 }

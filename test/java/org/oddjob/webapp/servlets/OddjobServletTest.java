@@ -9,7 +9,8 @@ import org.oddjob.Oddjob;
 import org.oddjob.OddjobLookup;
 import org.oddjob.OurDirs;
 import org.oddjob.jobs.WaitJob;
-import org.oddjob.state.JobState;
+import org.oddjob.state.ParentState;
+import org.oddjob.state.StateConditions;
 import org.oddjob.webapp.WebappConstants;
 
 public class OddjobServletTest extends TestCase {
@@ -78,13 +79,13 @@ public class OddjobServletTest extends TestCase {
 		
 		WaitJob waitForWait = new WaitJob();
 		waitForWait.setFor(wait);
-		waitForWait.setState("EXECUTING");
+		waitForWait.setState(StateConditions.EXECUTING);
 		
 		waitForWait.run();
 		
 		test.destroy();
 		
-		assertEquals(JobState.DESTROYED, 
-				oddjob.lastJobStateEvent().getJobState());
+		assertEquals(ParentState.DESTROYED, 
+				oddjob.lastStateEvent().getState());
 	}
 }

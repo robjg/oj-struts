@@ -19,7 +19,8 @@ import org.oddjob.Oddjob;
 import org.oddjob.OddjobLookup;
 import org.oddjob.arooa.xml.XMLConfiguration;
 import org.oddjob.jobs.WaitJob;
-import org.oddjob.state.JobState;
+import org.oddjob.state.ParentState;
+import org.oddjob.state.StateConditions;
 import org.oddjob.webapp.WebappConstants;
 import org.oddjob.webapp.servlets.LookupServlet;
 
@@ -172,7 +173,7 @@ public class LookupServletTest extends TestCase {
 
 		oj.run();
 		
-		assertEquals(JobState.COMPLETE, oj.lastJobStateEvent().getJobState());
+		assertEquals(ParentState.COMPLETE, oj.lastStateEvent().getState());
 		
 		OddjobLookup lookup = new OddjobLookup(oj);
 		
@@ -195,7 +196,7 @@ public class LookupServletTest extends TestCase {
 		
 		WaitJob wait = new WaitJob();
 		wait.setFor(sequence);
-		wait.setState("READY");
+		wait.setState(StateConditions.READY);
 		wait.run();
 		
 		// The notification could arrive while oddjob is still locked
@@ -205,7 +206,7 @@ public class LookupServletTest extends TestCase {
 		actions.action("Run");
 		
 		wait.hardReset();
-		wait.setState("COMPLETE");
+		wait.setState(StateConditions.COMPLETE);
 		wait.run();
 		
 		current = lookup.lookup("echo.current", Integer.class);

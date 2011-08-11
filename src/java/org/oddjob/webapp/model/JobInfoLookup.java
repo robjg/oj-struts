@@ -20,8 +20,8 @@ import org.oddjob.logging.LogListener;
 import org.oddjob.monitor.context.ExplorerContext;
 import org.oddjob.monitor.model.Describer;
 import org.oddjob.monitor.model.LogContextInialiser;
-import org.oddjob.state.JobStateEvent;
-import org.oddjob.state.JobStateListener;
+import org.oddjob.state.StateEvent;
+import org.oddjob.state.StateListener;
 
 /**
  * Provide a lookup facility for job information.
@@ -91,7 +91,7 @@ public class JobInfoLookup {
 	 * @param refId The refId.
 	 * @return The last state event.
 	 */
-	public JobStateEvent stateFor(String refId) {
+	public StateEvent stateFor(String refId) {
 		Object object = objectFor(refId);
 		if (object == null) {
 			throw new IllegalStateException("[" + refId + "] does not exist!");
@@ -101,17 +101,17 @@ public class JobInfoLookup {
 			return null;
 		}
 
-		class JSL implements JobStateListener {
-			JobStateEvent lastEvent;
-			public void jobStateChange(org.oddjob.state.JobStateEvent event) {
+		class JSL implements StateListener {
+			StateEvent lastEvent;
+			public void jobStateChange(org.oddjob.state.StateEvent event) {
 				lastEvent = event;
 			};
 		}
 		JSL jsl = new JSL();
 		
 		Stateful stateful = (Stateful) object;
-		stateful.addJobStateListener(jsl);
-		stateful.removeJobStateListener(jsl);
+		stateful.addStateListener(jsl);
+		stateful.removeStateListener(jsl);
 		return jsl.lastEvent;
 	}
 	

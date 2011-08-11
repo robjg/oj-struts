@@ -11,7 +11,7 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.oddjob.state.JobStateEvent;
+import org.oddjob.state.StateEvent;
 import org.oddjob.webapp.WebappConstants;
 import org.oddjob.webapp.model.JobInfoLookup;
 import org.oddjob.webapp.struts.forms.DetailForm;
@@ -38,9 +38,9 @@ public class StateTabAction extends Action {
 		ServletContext context = request.getSession().getServletContext();
 		JobInfoLookup lookup = (JobInfoLookup) context.getAttribute(WebappConstants.DETAIL_LOOKUP);
 		
-		JobStateEvent jobStateEvent = lookup.stateFor(detailForm.getRefId());
+		StateEvent jobStateEvent = lookup.stateFor(detailForm.getRefId());
 		
-		detailForm.setJobState(jobStateEvent.getJobState().toString());
+		detailForm.setJobState(jobStateEvent.getState().toString());
 		detailForm.setTime(jobStateEvent.getTime().toString());
 		Throwable t = jobStateEvent.getException();
 		if (t == null) {
