@@ -111,7 +111,7 @@ public class JobInfoLookupTest extends TestCase {
 		String xml = 
 			"<oddjob>" +
 			" <job>" +
-			"  <echo text='Hello World'/>" +
+			"  <echo>Hello World</echo>" +
 			" </job>" +
 			"</oddjob>";
 		

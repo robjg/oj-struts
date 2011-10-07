@@ -42,7 +42,7 @@ public class TreeNodeBeanBuilderTest extends TestCase {
 		String xml = 
 			"<oddjob>" +
 			" <job>" +
-			"  <echo text='Hello World'/>" +
+			"  <echo>Hello World</echo>" +
 			" </job>" +
 			"</oddjob>";
 		
@@ -79,7 +79,7 @@ public class TreeNodeBeanBuilderTest extends TestCase {
 			"   <jobs>" +
 			"    <sequential name='Child 2'>" +
 			"     <jobs>" +
-			"      <echo name='Child 3' text='Hello World'/>" +
+			"      <echo name='Child 3'>Hello World</echo>" +
 			"     </jobs>" +
 			"    </sequential>" +
 			"   </jobs>" +
