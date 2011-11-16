@@ -31,9 +31,15 @@ public class TreeBuilderAction extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 	throws Exception {
 		TreeFormBean treeForm = (TreeFormBean) form;
+		
 		ServletContext context = request.getSession().getServletContext();
 		JobInfoLookup lookup = (JobInfoLookup) context.getAttribute(WebappConstants.DETAIL_LOOKUP);
-		TreeNodeBeanBuilder builder = new TreeNodeBeanBuilder(lookup);
+
+		String currentRefId = request.getParameter("refId");
+		
+		TreeNodeBeanBuilder builder = new TreeNodeBeanBuilder(lookup,
+				currentRefId);
+		
 		if (treeForm.getRoot() == null) {
 			treeForm.setRoot(builder.buildRoot());			
 		} else {

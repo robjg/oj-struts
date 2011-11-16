@@ -53,7 +53,7 @@ public class TreeNodeBeanBuilderTest extends TestCase {
 		
 		JobInfoLookup lookup = new JobInfoLookup(new IconRegistry());
 		lookup.setRoot(oj, new OurExplorerContext());
-		TreeNodeBeanBuilder builder = new TreeNodeBeanBuilder(lookup);
+		TreeNodeBeanBuilder builder = new TreeNodeBeanBuilder(lookup, "1");
 		TreeNodeBean bean = builder.buildRoot();
 		
 		assertNotNull(bean);
@@ -94,7 +94,7 @@ public class TreeNodeBeanBuilderTest extends TestCase {
 		
 		JobInfoLookup lookup = new JobInfoLookup(new IconRegistry());
 		lookup.setRoot(oj, new OurExplorerContext());
-		TreeNodeBeanBuilder builder = new TreeNodeBeanBuilder(lookup);
+		TreeNodeBeanBuilder builder = new TreeNodeBeanBuilder(lookup, "1");
 		TreeNodeBean bean = builder.buildRoot();
 		bean.getExpand();
 		
@@ -140,7 +140,7 @@ public class TreeNodeBeanBuilderTest extends TestCase {
 		
 		JobInfoLookup lookup = new JobInfoLookup(new IconRegistry());
 		lookup.setRoot(i, null);
-		TreeNodeBeanBuilder builder = new TreeNodeBeanBuilder(lookup);
+		TreeNodeBeanBuilder builder = new TreeNodeBeanBuilder(lookup, "1");
 		TreeNodeBean bean = builder.buildRoot();
 
 		String iconId; 

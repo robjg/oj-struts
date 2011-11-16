@@ -1,0 +1,123 @@
+
+.tabs ul {
+	list-style-type: none;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	overflow: hidden;
+	clear: both;
+}
+
+.tabs li {
+	float: left;
+	width: 8em;
+}
+
+
+.tabs a {
+	display: block;	
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	margin: 0 0 0 1em;
+	text-decoration: none; 
+	text-align: center;
+	border-radius-topleft: 7px;
+	-moz-border-radius-topleft: 7px;
+	border-radius-topright: 7px;
+	-moz-border-radius-topright: 7px;
+}
+
+.tabs .selected {
+	background-color: #A5DF00;
+	color: #FF4000; 
+}
+	
+.tabs .notSelected {
+	background: green;
+	color: #FF4000; 
+}
+
+.tabs a:hover {
+	color: black;
+}
+
+/* main */
+
+#main {
+	border: 4px solid #A5DF00;
+	min-height: 400px;
+ 	padding: 0.7em; 
+	background: white;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+}
+
+#main table {
+	border-collapse: collapse;
+	width: 100%
+}
+
+#main td {
+	font-size: 0.86em;
+	font-family: verdana helvetica, arial, sans-serif;
+	border: 1px solid black;
+	overflow: auto;
+ 	padding: 0.3em; 
+}
+
+#main table #name {
+	background-color: #DDD;
+}
+
+#main table.class #name {
+	width: 30%;
+}
+
+.control {
+	border: 2px solid black;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	background-color: #DDD;
+	float: right;
+	margin: 0 0 2em; 0;
+}
+
+.control fieldset {
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+}
+
+.control label {
+	margin-right: 2em;
+}
+
+.control form {
+	padding: 0.4em;
+	margin: 0.4em;
+	clear: both;
+}
+
+.control input {
+	width: 9em;
+}
+
+#refresh-set {
+		float: left;
+}
+
+#refresh-submit {
+	margin: 0.2em;
+	float: right;
+}
+
+ul.textarea {	
+	list-style-type: none;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	font-size: 0.75em;
+	font-family: 'Courier New', Courier, monospace;
+}

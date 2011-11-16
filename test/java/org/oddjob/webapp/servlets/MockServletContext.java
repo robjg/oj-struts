@@ -109,4 +109,9 @@ public class MockServletContext implements ServletContext {
 		throw new RuntimeException("Unexpected from " + getClass());
 	}
 
+	@Override
+	public String getContextPath() {
+		throw new RuntimeException("Unexpected from " + getClass());
+	}
+
 }

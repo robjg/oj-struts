@@ -8,11 +8,10 @@
 
 <html:form action="jobActionsPerform" target="_top">	
 <html:hidden property="refId"/>
-<table id="commands">
-	<tr>
+<fieldset>
+<legend>Job Actions</legend>
 		<logic:iterate name="jobActionsForm" id="command" 
 			property="commands">
-			<td>
 			<% 
 			if (jobActionsForm.isEnabled((String) command)) {
 			%>
@@ -22,8 +21,6 @@
 				<html:button property="irrelivant-because-disabled" 
 					disabled="true" value="<%=command.toString()%>"/>
 			<% } %>
-			</td>
 		</logic:iterate>
-	</tr>
-</table>
+</fieldset>
 </html:form>

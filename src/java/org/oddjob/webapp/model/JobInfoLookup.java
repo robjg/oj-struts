@@ -15,13 +15,13 @@ import org.oddjob.images.IconEvent;
 import org.oddjob.images.IconListener;
 import org.oddjob.logging.ConsoleArchiver;
 import org.oddjob.logging.LogArchiver;
+import org.oddjob.logging.LogEvent;
 import org.oddjob.logging.LogLevel;
 import org.oddjob.logging.LogListener;
 import org.oddjob.monitor.context.ExplorerContext;
 import org.oddjob.monitor.model.Describer;
 import org.oddjob.monitor.model.LogContextInialiser;
 import org.oddjob.state.StateEvent;
-import org.oddjob.state.StateListener;
 
 /**
  * Provide a lookup facility for job information.
@@ -34,7 +34,7 @@ public class JobInfoLookup {
 	private final IconRegistry iconRegistry;
 	
 	/** Jobs by refId. */
-	private Map/*<String, JobTreeNode >*/ jobs = new HashMap();
+	private Map<String, TreeNode> jobs = new HashMap<String, TreeNode>();
 	
 	/** The root refId */
 	private String rootRefId; 
@@ -89,7 +89,7 @@ public class JobInfoLookup {
 	 * Get the last state event for the given refId.
 	 * 
 	 * @param refId The refId.
-	 * @return The last state event.
+	 * @return The last state event. Null if it isn't Stateful.
 	 */
 	public StateEvent stateFor(String refId) {
 		Object object = objectFor(refId);
@@ -101,18 +101,7 @@ public class JobInfoLookup {
 			return null;
 		}
 
-		class JSL implements StateListener {
-			StateEvent lastEvent;
-			public void jobStateChange(org.oddjob.state.StateEvent event) {
-				lastEvent = event;
-			};
-		}
-		JSL jsl = new JSL();
-		
-		Stateful stateful = (Stateful) object;
-		stateful.addStateListener(jsl);
-		stateful.removeStateListener(jsl);
-		return jsl.lastEvent;
+		return ((Stateful) object).lastStateEvent();
 	}
 	
 	/**
@@ -153,7 +142,7 @@ public class JobInfoLookup {
 	 * @param refId The refId.
 	 * @return A map of properties.
 	 */
-	public Map propertiesFor(String refId) {
+	public Map<String, String> propertiesFor(String refId) {
 		Object object = objectFor(refId);
 		return Describer.describe(object);
 	}
@@ -164,15 +153,15 @@ public class JobInfoLookup {
 	 * @param refId The refId of the job.
 	 * @return A list of LogEvent objects.
 	 */
-	public List consoleEventsFor(String refId) {
+	public List<LogEvent> consoleEventsFor(String refId) {
 		TreeNode treeNode = (TreeNode) jobs.get(refId);
 		if (treeNode == null) {
 			throw new IllegalStateException("[" + refId + "] does not exist!");
 		}
 		
 		class LL implements LogListener {
-			List list = new ArrayList();
-			public void logEvent(org.oddjob.logging.LogEvent logEvent) {
+			List<LogEvent> list = new ArrayList<LogEvent>();
+			public void logEvent(LogEvent logEvent) {
 				list.add(logEvent);
 			}
 		}
@@ -193,17 +182,17 @@ public class JobInfoLookup {
 	 * @param refId The refId of the job.
 	 * @return A list of LogEVent objects.
 	 */
-	public List<org.oddjob.logging.LogEvent> logEventsFor(String refId) {
+	public List<LogEvent> logEventsFor(String refId) {
 		TreeNode treeNode = (TreeNode) jobs.get(refId);
 		if (treeNode == null) {
 			throw new IllegalStateException("[" + refId + "] does not exist!");
 		}
 		
 		class LL implements LogListener {
-			List<org.oddjob.logging.LogEvent> list = 
-				new ArrayList<org.oddjob.logging.LogEvent>();
+			List<LogEvent> list = 
+				new ArrayList<LogEvent>();
 			
-			public void logEvent(org.oddjob.logging.LogEvent logEvent) {
+			public void logEvent(LogEvent logEvent) {
 				list.add(logEvent);
 			}
 		}

@@ -11,6 +11,7 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.oddjob.webapp.WebappConstants;
 import org.oddjob.webapp.struts.forms.RefreshForm;
 
 /**
@@ -35,11 +36,37 @@ public class RefreshPerformAction extends Action {
 		HttpSession session = request.getSession();
 		
 		String refresh = refreshForm.getRefresh();
-		if (refresh != null && !"".equals(refresh)) {
-			session.setAttribute("refresh", refresh);
+		
+		if (refresh != null) {
+			if (equals(refresh.trim())) {
+				refresh = null;
+			}
+			else {
+				int seconds;
+				try {
+					seconds = Integer.parseInt(refresh);
+				}
+				catch (NumberFormatException e) {
+					seconds = -1;
+				}
+				String minRefreshParam = 
+						session.getServletContext().getInitParameter(
+								WebappConstants.MINIMUM_REFRESH);
+				int minRefresh = 1;
+				if (minRefreshParam != null) {
+					minRefresh = Integer.parseInt(minRefreshParam);
+				}
+				if (seconds < minRefresh) {
+					refresh = null;
+				}
+			}
+		}
+		
+		if (refresh == null) {
+			session.removeAttribute("refresh");
 		}
 		else {
-			session.removeAttribute("refresh");
+			session.setAttribute("refresh", refresh);
 		}
 		
 		/* forward to the tab state jsp */

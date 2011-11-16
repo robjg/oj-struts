@@ -14,7 +14,8 @@ import org.apache.struts.action.ActionMapping;
 import org.oddjob.webapp.struts.forms.RefreshForm;
 
 /**
- * The Struts Action which handles the refresh field.
+ * The Struts Action that populates the refresh field. This is called from 
+ * the detailLayout JSP to populate the backing form.
  *  
  * @author Rob Gordon.
  */

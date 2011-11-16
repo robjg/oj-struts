@@ -5,8 +5,11 @@
 
 <bean:define id="exception" name="detailForm" property="exception"/>
 
-<table border="1" cellpadding="0" cellspacing="0" width="100%">
-	<tr>
+<table class="state">
+		<colgroup>
+			<col id="name"/>
+			<col id="value"/>
+		</colgroup>	<tr>
 		<td>State</td>
 		<td><bean:write name="detailForm" property="jobState"/></td>
 	</tr>

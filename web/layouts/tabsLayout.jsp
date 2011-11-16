@@ -29,13 +29,10 @@ These attribute must be passed to the tile.
   
 %>
 
-<table border="0"  cellspacing="0" cellpadding="0" id="tabs">
+<div class="tabs">
+
   <%-- Draw tabs --%>
-<tr>
-  <td width="10">&nbsp;</td>
-  <td>
-    <table border="0"  cellspacing="0" cellpadding="5">
-      <tr>
+<ul>
 <logic:iterate id="tab" name="tabList" type="org.apache.struts.tiles.beans.MenuItem" >
 <% // compute href
   String href = "detail.do" + "?"+parameterName + "=" + index + "&refId=" 
@@ -52,35 +49,17 @@ These attribute must be passed to the tile.
 	} // enf if
   index++;
 %>
-  <td class="surround" width="80px">
+  <li>
   <a class="<%=style%>" href="<%=href%>" ><%=tab.getValue()%></a>
-  </td>
-  <td width="1" ></td>
+  </li>
   
 </logic:iterate>
-      </tr>
-    </table>
-  </td>
-  <td width="10" >&nbsp;</td>
-</tr>
+</ul>
+</div>
 
-
-<tr>
-  <td height="5" class="surround" colspan="3" >&nbsp;</td>
-</tr>  
 
   <%-- Draw body --%>
-<tr>
-  <td width="10" class="surround">&nbsp;</td>
-  <td id="main" valign="top">
+  <div id="main">
   <tiles:insert name="<%=selectedBody%>" flush="true" />
-  </td>
-  <td width="10" class="surround">&nbsp;</td>
-</tr>  
-
-<tr>
-  <td height="5" class="surround" colspan="3" >&nbsp;</td>
-</tr>  
-
-</table>
+  </div>
 

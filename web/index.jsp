@@ -1,3 +1,7 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+"http://www.w3.org/TR/html4/frameset.dtd"> 
+
+<%@page contentType="text/html"%>
 <%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 
 <%
@@ -17,10 +21,18 @@
 	<head>
 		<title>Oddjob</title>
 	</head>
-	<frameset cols="40%,60%">
-		<html:frame action="oddjob-tree"
-			paramId="refId" paramName="refId"/>
-		<html:frame frameName="detail" action="detail"
-			paramId="refId" paramName="refId"/>
+	
+	<frameset rows="106, *">
+		<frame src="title.jsp" noresize/>
+		<frameset cols="40%,60%">
+			<html:frame action="oddjob-tree"
+				paramId="refId" paramName="refId"/>
+			<html:frame frameName="detail" action="detail"
+				paramId="refId" paramName="refId"/>
+		</frameset>
+		<noframes>
+			<p>Sorry this page uses frames. Future version won't though.
+		</noframes>
 	</frameset>
+	
 </html>

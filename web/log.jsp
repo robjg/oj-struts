@@ -3,13 +3,13 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
 
-<table border="1" cellpadding="0" cellspacing="0" width="100%">
+<ul class="textarea">
+	
 	<logic:iterate name="detailForm" id="element" property="logEvents">
-	<tr>
-		<td>
+	<li>
 		<bean:write name="element" property="message"/>
-		</td>
-	</tr>
+	</li>
 	</logic:iterate>
-</table>
+	
+</ul>
 	

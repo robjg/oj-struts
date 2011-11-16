@@ -2,7 +2,6 @@
  */
 package org.oddjob.webapp.struts.actions;
 
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -21,7 +20,7 @@ import org.oddjob.webapp.struts.forms.JobActionsForm;
 
 
 /**
- * The Struts Action which handles the state tab.
+ * The Struts Action that populates the Job Action Buttons.
  *  
  * @author Rob Gordon.
  */
@@ -40,9 +39,8 @@ public class JobActionsPopulateAction extends Action {
 		ServletContext context = request.getSession().getServletContext();
 		JobInfoLookup lookup = (JobInfoLookup) context.getAttribute(WebappConstants.DETAIL_LOOKUP);
 		WebJobActions actions = lookup.actionsFor(jobActionsForm.getRefId());
-		Map commandMap = new LinkedHashMap();
-		for (Iterator it = actions.commands().iterator(); it.hasNext();) {
-			String command = (String) it.next();
+		Map<String, Boolean> commandMap = new LinkedHashMap<String, Boolean>();
+		for (String command : actions.commands()) {
 			commandMap.put(command, new Boolean(
 					actions.isEnabled(command)));
 		}

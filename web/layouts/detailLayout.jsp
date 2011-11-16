@@ -3,21 +3,17 @@
 <%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
 
 
-<table border="0"  cellspacing="0" cellpadding="0" id="detail">
-<tr>
-<td>
-	<tiles:insert page="/refreshPopulate.do" />
-</td>
-</tr>
-<tr>
-<td>
-	<tiles:insert attribute="detail.commands"/>
-</td>
-</tr>
-<tr>
-<td>
-	<tiles:insert attribute="detail.tabs"/>
-</td>
-</tr>
-</table>
+<div id="detail">
 
+
+		<div class="control">
+
+	<tiles:insert page="/refreshPopulate.do" />
+	
+	<tiles:insert attribute="detail.commands"/>
+	
+		</div>
+
+	<tiles:insert attribute="detail.tabs"/>
+
+</div>

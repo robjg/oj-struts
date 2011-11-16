@@ -50,19 +50,11 @@ public class IconServlet extends HttpServlet {
 			logger.debug("No icon for [" + iconId + "]");
 			return;
 		}
-		// Vain attempt to for IE to cache images
+		
+		// Attempt to get IE to cache images
 		response.setDateHeader("Expires", -1);
-		ImageIcon imageIcon = new ImageIcon(iconTip.getImageData());
-		response.setContentType("image/jpeg");
-		int width = imageIcon.getIconWidth();
-		int height = imageIcon.getIconHeight();
-		BufferedImage bufferedIcon = new BufferedImage(
-				width, height, BufferedImage.TYPE_INT_RGB);
-		Graphics2D graphics = (Graphics2D)bufferedIcon.getGraphics();
-		graphics.setBackground(Color.WHITE);
-		graphics.clearRect(0, 0, width, height);
-		imageIcon.paintIcon(null, graphics, 0, 0);
-		ImageIO.write(bufferedIcon, "jpg", response.getOutputStream());
+		response.setContentType("image/gif");
+		response.getOutputStream().write(iconTip.getImageData());
 	}
 	
 	public long getLastModified(HttpServletRequest request) {

@@ -151,6 +151,11 @@ public class LookupServletTest extends TestCase {
 					assertEquals(WebappConstants.DETAIL_LOOKUP, arg0);
 					lookup = (JobInfoLookup) arg1;
 				}
+
+				@Override
+				public String getContextPath() {
+					throw new RuntimeException("Unexpected.");
+				}
 				
 			};
 		}

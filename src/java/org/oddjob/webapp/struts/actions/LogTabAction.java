@@ -13,6 +13,7 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.oddjob.logging.LogEvent;
 import org.oddjob.webapp.WebappConstants;
 import org.oddjob.webapp.model.JobInfoLookup;
 import org.oddjob.webapp.struts.forms.DetailForm;
@@ -39,7 +40,7 @@ public class LogTabAction extends Action {
 		ServletContext context = request.getSession().getServletContext();
 		JobInfoLookup lookup = (JobInfoLookup) context.getAttribute(WebappConstants.DETAIL_LOOKUP);
 		
-		List logEvents = lookup.logEventsFor(detailForm.getRefId());
+		List<LogEvent> logEvents = lookup.logEventsFor(detailForm.getRefId());
 		
 		detailForm.setLogEvents(logEvents);
 		

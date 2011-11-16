@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts.action.ActionForm;
+import org.oddjob.logging.LogEvent;
 
 /**
  * A form which contains information required to set the detail panel tab.
@@ -21,7 +22,7 @@ public class DetailForm extends ActionForm implements Serializable {
 	private transient String refId;
 	
 	/** Properties for the properties tab. */
-	private transient Map properties;
+	private transient Map<String, String> properties;
 	
 	/** Job state for the state tab. */
 	private transient String jobState;
@@ -29,10 +30,10 @@ public class DetailForm extends ActionForm implements Serializable {
 	private transient String Exception;
 	
 	/** Console Events for the console tab. */
-	private transient List consoleEvents;
+	private transient List<LogEvent> consoleEvents;
 	
 	/** Log Events for the log tab. */
-	private transient List logEvents;
+	private transient List<LogEvent> logEvents;
 	
 	/** The selected tab saved in the session. */
 	private int selectedTab;
@@ -114,7 +115,7 @@ public class DetailForm extends ActionForm implements Serializable {
 	 * 
 	 * @return A map of properties.
 	 */
-	public Map getProperties() {
+	public Map<String, String> getProperties() {
 		return properties;
 	}
 
@@ -123,7 +124,7 @@ public class DetailForm extends ActionForm implements Serializable {
 	 * 
 	 * @param properties A map of properties.
 	 */
-	public void setProperties(Map properties) {
+	public void setProperties(Map<String, String> properties) {
 		this.properties = properties;
 	}
 	
@@ -132,7 +133,7 @@ public class DetailForm extends ActionForm implements Serializable {
 	 * 
 	 * @return A list of LogEvent objects.
 	 */
-	public List getConsoleEvents() {
+	public List<LogEvent> getConsoleEvents() {
 		return consoleEvents;
 	}
 
@@ -141,7 +142,7 @@ public class DetailForm extends ActionForm implements Serializable {
 	 * 
 	 * @param consoleEvents A list of LogEvent objects.
 	 */
-	public void setConsoleEvents(List consoleEvents) {
+	public void setConsoleEvents(List<LogEvent> consoleEvents) {
 		this.consoleEvents = consoleEvents;
 	}
 	
@@ -150,7 +151,7 @@ public class DetailForm extends ActionForm implements Serializable {
 	 * 
 	 * @return A list of LogEvent objects.
 	 */
-	public List getLogEvents() {
+	public List<LogEvent> getLogEvents() {
 		return logEvents;
 	}
 
@@ -159,7 +160,7 @@ public class DetailForm extends ActionForm implements Serializable {
 	 * 
 	 * @param logEvents A list of LogEvent objects.
 	 */
-	public void setLogEvents(List logEvents) {
+	public void setLogEvents(List<LogEvent> logEvents) {
 		this.logEvents = logEvents;
 	}
 

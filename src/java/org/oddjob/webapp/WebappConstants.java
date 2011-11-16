@@ -18,6 +18,9 @@ public class WebappConstants {
 	 * job name. */
 	public final static String NAME_PARAM = "name";
 	
+	/** The parameter that controls the minimum refresh allowed. */
+	public final static String MINIMUM_REFRESH = "minimum_refresh";
+	
 	/** The id of the node to use as the root of the displayed
 	 * tree. If empty then oddjob node itself is displayed.*/
 	public final static String ROOT_PARAM = "root";

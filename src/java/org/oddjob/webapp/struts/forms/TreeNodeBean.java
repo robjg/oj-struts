@@ -38,6 +38,8 @@ public class TreeNodeBean implements Serializable {
 	
 	private boolean hasChildren;
 	
+	private String styleClass;
+	
 	public void setTreeNodeBeanBuilder(TreeNodeBeanBuilder builder){
 		this.builder = builder;
 	}
@@ -196,5 +198,18 @@ public class TreeNodeBean implements Serializable {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("iconId", iconId);
 		return map;
+	}
+
+	public String getStyleClass() {
+		if (styleClass == null) {
+			return "";
+		}
+		else {
+			return styleClass;
+		}
+	}
+
+	public void setStyleClass(String styleClass) {
+		this.styleClass = styleClass;
 	}
 }

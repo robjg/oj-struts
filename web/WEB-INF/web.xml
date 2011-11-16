@@ -11,10 +11,6 @@
 			<param-name>file</param-name>
 			<param-value>/WEB-INF/oddjob.xml</param-value>
 		</init-param>
-		<init-param>
-			<param-name>root</param-name>
-			<param-value>main</param-value>
-		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
@@ -25,10 +21,10 @@
 	<servlet>
 		<servlet-name>Oddjob View</servlet-name>
 		<servlet-class>org.oddjob.webapp.servlets.LookupServlet</servlet-class>
-		<init-param>
+<!-- 		<init-param>
 			<param-name>root</param-name>
-			<param-value>main</param-value>
-		</init-param>
+			<param-value>main</param-value>  
+		</init-param> -->
 		<load-on-startup>3</load-on-startup>
 	</servlet>
 	<!-- Struts Action Servlet Configuration -->

@@ -1,0 +1,30 @@
+
+.tree ul {
+	list-style-type: none;
+	margin: 0 0 0 0;
+	padding: 0 0 0 20px;
+}
+
+.tree li {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+.tree li input {
+	margin: 0 0 0 -20px;
+	padding: 0 0 0 0;
+}
+
+.tree li a {
+	color: black;
+	text-decoration: none;
+}
+
+.tree li a:hover {
+	background-color: #FF4000;
+/*	background-color: #84CAF0; */
+}
+
+.tree a.selected {
+	background-color: #A5DF00;
+}

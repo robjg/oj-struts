@@ -40,9 +40,25 @@ public class StateTabAction extends Action {
 		
 		StateEvent jobStateEvent = lookup.stateFor(detailForm.getRefId());
 		
-		detailForm.setJobState(jobStateEvent.getState().toString());
-		detailForm.setTime(jobStateEvent.getTime().toString());
-		Throwable t = jobStateEvent.getException();
+		String state;
+		String time;
+		Throwable t;
+		
+		if (jobStateEvent == null) {
+			state = "Not Stateful";
+			time = " - - - - -";
+			t = null;
+		}
+		else {
+			state = jobStateEvent.getState().toString();			
+			time = jobStateEvent.getTime().toString();
+			t = jobStateEvent.getException();
+		}
+		
+		detailForm.setJobState(state);
+		detailForm.setTime(time);
+		
+		
 		if (t == null) {
 			detailForm.setException("");
 		}

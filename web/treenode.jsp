@@ -4,21 +4,24 @@
 
 <nested:root>
  
-  <img src="gfx/spacer.gif" width="<nested:write property="nodeIndent" />" height="1">
-  
+  <li>
+ 
+  <nested:define id="styleClass" property="styleClass" type="java.lang.String"/> 
+	  
   <nested:equal property="showChildren" value="true"> 
   
-    <nested:image src="gfx/km_minus.gif" property="collapse"/>
+    <nested:image src="gfx/minus.png" property="collapse"/>
     <nested:notEmpty property="iconId">
     	<nested:img page="/icon" property="iconIdRequest"/>
     </nested:notEmpty>
     <nested:link href="index.jsp" target="_top"
-    		property="request">
+    		property="request" styleClass="<%=styleClass%>">
 	    <nested:write property="nodeName" />
 	</nested:link>
-    <br> 
     <nested:iterate property="childCollection"> 
-      <jsp:include page="treenode.jsp" /> 
+    	<ul>
+	      <jsp:include page="treenode.jsp" />
+      	</ul> 
     </nested:iterate> 
     
   </nested:equal>
@@ -26,22 +29,19 @@
   <nested:equal property="showChildren" value="false"> 
     
     <nested:equal property="hasChildren" value="true">
-      <nested:image src="gfx/km_plus.gif" property="expand"/>
+      <nested:image src="gfx/plus.png" property="expand"/>
     </nested:equal>
-    
-    <nested:equal property="hasChildren" value="false">
-      <img src="gfx/km_empty.gif">
-    </nested:equal>
-    
+      
     <nested:notEmpty property="iconId">
     	<nested:img page="/icon" property="iconIdRequest"/>
     </nested:notEmpty>
     <nested:link href="index.jsp" target="_top"
-    		property="request">
+    		property="request" styleClass="<%=styleClass%>">
 	    <nested:write property="nodeName" />
 	</nested:link>
-    <br> 
     
   </nested:equal>
-   
+  
+  </li>
+  
 </nested:root>
